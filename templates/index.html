@@ -1,0 +1,24 @@
+<html>​
+<head>​
+<script src="https://cdn.traitify.com/lib/v1.js"></script>​
+</head>​
+<body>​
+
+<div class="assessment"></div>​
+<div class="results"></div>
+
+<script>
+Traitify.setPublicKey("s6dkoeel6qritb4h5dpk1ovuj7");
+Traitify.setHost("https://api-sandbox.traitify.com");
+Traitify.setVersion("v1");
+var assessmentId = '56172b11-1df8-466c-8d85-04b1ecd9c5ee';
+
+traitify = Traitify.ui.load(assessmentId, ".assessment", {
+    results: {target: ".results"},
+});
+
+</script>​
+
+
+</body>​
+​</html>
