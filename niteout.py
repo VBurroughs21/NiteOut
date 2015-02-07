@@ -10,17 +10,13 @@ class TraitifyAssessment():
     traitify = Traitify(secret_key)
     assessment = None
 
-    def setUp(self):
-        self.assessment = self.traitify.create_assessment('core')
+    def setUp(self, assessment_id):
+        self.assessment = self.traitify.create_assessment('assessment_id')
         traitify.deck_id = decks[0].id
 	        
     def assessment_decks(self):
         decks = self.traitify.get_decks()
         self.assertTrue(len(decks) > 0)
-
-	def create_assessment(self):
-		assessment = self.traitify.create_assessment('core')
-		self.assertTrue(assessment.deck_id == "core")
 
 	def get_assessment(self):
 		self.assertTrue(self.traitify.get_assessment(self.assessment.id).id != None)
@@ -48,19 +44,3 @@ class TraitifyAssessment():
 
 	    self.assertTrue(results.id != None)
 	    self.assertTrue(results.personality_types == None)
-
-	if len(sys.argv) is 1:
-		print "Please pass in your Traitify app's secret key as an argument. If you don't have a Traitify account, please sign up at https://developer.traitify.com."
-	else:
-		TraitifyTest.traitify = Traitify(sys.argv.pop())
-
-	suite = unittest.TestLoader().loadTestsFromTestCase(TraitifyTest)
-	unittest.TextTestRunner(verbosity=1).run(suite)
-
-def main():
-    args = sys.argv
-    script, key = args
-    TraitifyAssessment()
-
-if __name__ == "__main__":
-    main()
