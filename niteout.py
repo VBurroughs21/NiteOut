@@ -1,18 +1,14 @@
 from traitify import Traitify
 import os
 
-class TraitifyAssessment():
-    secret_key = os.environ["TRAITIFY_SECRET_KEY"]
-    traitify = Traitify(secret_key)
-    assessment = None
+secret_key = os.environ["TRAITIFY_SECRET_KEY"]
+niteout = Traitify(secret_key)
 
-    def setUp(self):
-        self.assessment = self.traitify.create_assessment('core')
-        
-    def complete_assessment(self):
-        
-    def assessment_decks(self):
-        decks = self.traitify.get_decks()
+decks = traitify.get_decks()
+
+niteout.deck_id = decks[0].id
+
+assessment = traitify.create_assessment()
         
 print decks
 
